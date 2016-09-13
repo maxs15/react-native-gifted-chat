@@ -288,7 +288,6 @@ class GiftedChat extends React.Component {
       }}>
         <MessageContainer
           {...this.props}
-
           invertibleScrollViewProps={this.invertibleScrollViewProps}
 
           messages={this.getMessages()}
@@ -437,6 +436,7 @@ class GiftedChat extends React.Component {
         style={styles.container}
         onLayout={(e) => {
           const layout = e.nativeEvent.layout;
+          if (!layout.height) return;
           this.setMaxHeight(layout.height);
           InteractionManager.runAfterInteractions(() => {
             this.setState({
